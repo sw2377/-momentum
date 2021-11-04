@@ -16,10 +16,28 @@ function onLoginSubmit(event){
 
 loginForm.addEventListener("submit", onLoginSubmit);
 
+
+
 function paintGreetings(username){
-    greeting.innerText = `Hello ${username}`;
+
+    //greeting.innerText = `Hello ${username}`;
+    greeting.innerText = title + username
     greeting.classList.remove(HIDDEN_CLASSNAME);
 }
+
+const date = new Date();
+let timeNow = date.getHours();
+
+if(timeNow >= 5 && timeNow < 12){
+    title = "Good Morning, "
+}else if(timeNow >= 12 && timeNow < 19){
+    title = "Good Afternoon, "
+}else if(timeNow >= 19 && timeNow < 22){
+    title = "Good Evening, "
+}else if(timeNow >= 22 || timeNow < 5){
+    title = "Good Night, "
+}
+
 
 const savedUsername = localStorage.getItem("USERNAME_KEY");
 
