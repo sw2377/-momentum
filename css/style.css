@@ -13,12 +13,16 @@ form, input{
     border:none;
 }
 
+form input:focus-visible{
+    outline:none;
+ }
+
 .hidden{
     display:none;
 }
 
 
-.section_left, .section_right, #clock, #login, #todo, #quote, #weather{
+.section_left, .section_right, #clock, #date, #login, #todo, #quote, #weather{
     position:absolute;
 }
 
@@ -37,7 +41,6 @@ form, input{
 .section_right{
     width:60%;
     right:2%;
-    background:rgba(255,255,255,0.5);
     border-radius:30px;
 }
 
@@ -56,6 +59,11 @@ form, input{
     left:50%;
     transform:translateX(-50%);
     top:10%;
+    color:#333;
+}
+
+#date{
+
 }
 
 /* todo */
@@ -71,38 +79,61 @@ form, input{
     font-size:2em;  
 }
 
+#todo-form input[type="text"]::placeholder{
+    color:#333
+}
+
 #todo-list{
     padding-top:5%;
     font-size:1.5em;
 }
 
+#todo-list span{
+    vertical-align:middle;
+}
+
+#todo-list button{
+    margin-left:1vw;
+    padding:1.5%;
+    background-color:#fff;
+    border:none;
+    border-radius:30%;
+}
+
 /* weather */
 #weather{
-    right:2%;
+    right:1%;
+    top:1%;
+}
+#weather span{
+    
 }
 
 /* login */
 #login{
-    width:60%;
+    width:100%;
     left:50%;
     transform:translateX(-50%);
-    top:50%;
-    
+    top:40%;
+    font-size:3em;
+    font-weight:bold;
+    color:#fff;
 }
 
 #login-form input[type="text"]{
     width:80%;
-    border-bottom:1px solid #000;
-    font-size:2em;
+    border-bottom:2px solid #fff;
+    font-size:1em;
+    color:#fff;
 }
 
 #login-form input[type="submit"]{
-    float:right;
-    font-size:2em;
+    text-indent:-9999px;
 }
 
 #greeting{
-    font-size:3em;
+    font-size:1.3em;
+    color:#fff;
 }
 
 #greeting{}
@@ -114,19 +145,32 @@ form, input{
     bottom:0;
     width:100%;
     font-size:1em;
+    color:#fff;
 }
 
 #quote span{
     display:block;
+    position:relative;
 }
 
 #quote span:first-child{
-    font-style:italic;
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 0.5s ease-in-out;
 }
 
-#quote span:first-child:hover{
-    font-weight:700;
+#quote span:first-child.on{
+   opacity:1;
+   transform:translateY(10px);
 }
 
 #quote span:last-child{
+    font-style:italic;
+    transform:translateY(0px);
+    transition:all 0.5s ease-in-out;
 }
+
+#quote span:last-child.on{
+    transform:translateY(10px);
+}
+
